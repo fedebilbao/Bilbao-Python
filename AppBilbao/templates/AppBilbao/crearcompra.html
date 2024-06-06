@@ -1,0 +1,15 @@
+{% extends "AppBilbao/padre.html"%}
+{% load static %}
+{% block contenidoQueCambia%}
+    
+<form action="{% url 'crearCompra' %}" method="post">{% csrf_token%}
+	
+        <table>
+                {{miformulario.as_table}}
+        </table>
+        
+        <input id="submit" type="submit" value="COMPRAR">
+  
+</form>
+
+{% endblock%}

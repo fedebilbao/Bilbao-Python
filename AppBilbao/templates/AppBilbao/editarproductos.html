@@ -2,13 +2,13 @@
 {% load static %}
 {% block contenidoQueCambia%}
     
-<form action="{% url 'cargarProducto' %}" method="POST">{% csrf_token%}
+<form action="{% url 'editarProducto' id %}" method="POST">{% csrf_token%}
 	
         <table>
                 {{miformulario.as_table}}
         </table>
         
-        <input id="submit" type="submit" value="CARGAR">
+        <input id="submit" type="submit" value="EDITAR">
   
 </form>
 

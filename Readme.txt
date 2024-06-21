@@ -1,4 +1,7 @@
-Hola bienvenidos a mi tercer entrega del curso de programación en python:
+Hola bienvenidos a la entrega final del curso de programación en python de Federico Bilbao:
+
+Proyecto para cargar productos a una app de venta
+
 
 pasaremos a detallar las url correspondientes a cada vista
 1- inicio http://127.0.0.1:8000/AppBilbao/ (se puede ingresar haciendo click en el logo superior del header)

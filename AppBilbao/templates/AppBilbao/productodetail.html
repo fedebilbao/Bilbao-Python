@@ -1,0 +1,9 @@
+{% extends "AppBilbao/padre.html"%}
+{% load static %}
+{% block contenidoQueCambia%}
+<img src="{{producto.imagen}}" alt="">
+<h2>Nombre del producto: {{producto.denominacion}}</h2>
+<h3>precio: $ {{producto.precio}}</h3>
+<h4>Stock: {{producto.stock}}</h4>
+{% endblock%}
+

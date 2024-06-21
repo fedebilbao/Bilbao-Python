@@ -1,14 +1,16 @@
 {% extends "AppBilbao/padre.html"%}
 {% load static %}
 {% block contenidoQueCambia%}
+
+<h2>Antes de realizar modificaciones usted debe logearse</h2>
     
-<form action="{% url 'cargarProducto' %}" method="POST">{% csrf_token%}
+<form action="{% url 'login' %}" method="POST">{% csrf_token%}
 	
         <table>
                 {{miformulario.as_table}}
         </table>
         
-        <input id="submit" type="submit" value="CARGAR">
+        <input id="submit" type="submit" value="Iniciar Sesión">
   
 </form>
 

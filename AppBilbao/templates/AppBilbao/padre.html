@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Bilbao Fitness</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -18,30 +18,38 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'inicio' %}"">Bilbao Fitness</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'carrito' %}">carrito</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'perfil' %}">perfil</a></li>
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" style="display: flex;">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'nosotros' %}">nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'carrito' %}">carrito</a></li>                                          
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar productos</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'productos' %}">Todos los productos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'productos' %}">Lista de productos</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="{% url 'productos' %}">Más vendidos</a></li>
-                                <li><a class="dropdown-item" href="{% url 'productos' %}">Nueva colección</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cargarProducto' %}">Cargar Producto</a></li>
+                                
                             </ul>
                         </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
+
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'perfil' %}"><h2 style="margin-left: 50rem;">{{user.username}}</h2></a>
+                        <form method="POST" action="{% url 'logout' %}">{% csrf_token %}
+                            <button type="submit"> Salir </button>    
+                        </form>
+                        <form method="GET" action="{% url 'editarPerfil' %}">{% csrf_token %}
+                            <button type="submit"> Editar </button>    
+                        </form>
+    
+                        {% else %}
+                        <li style="margin-left: 50rem;" class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'perfil' %}">perfil</a> 
+                            <button><a href="{% url 'login' %}">Ingresar</a></button>
+                            <button><a href="{% url 'register' %}">Registrarse</a></button>
+                        </li>
+                        {% endif %}
+                </ul>
+                
             </div>
         </nav>
         <!-- Header-->

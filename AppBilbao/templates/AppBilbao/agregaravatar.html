@@ -2,7 +2,7 @@
 {% load static %}
 {% block contenidoQueCambia%}
     
-<form action="{% url 'cargarProducto' %}" method="POST">{% csrf_token%}
+<form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data">{% csrf_token%}
 	
         <table>
                 {{miformulario.as_table}}

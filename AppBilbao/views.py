@@ -16,8 +16,17 @@ def inicio(request):
 
 @login_required()
 def perfil(request):
-    avatar = Avatar.objects.get(user=request.user.id)
-    return render(request, "AppBilbao/perfil.html", {"url": avatar.imagen.url})
+    
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "AppBilbao/perfil.html", {"url": avatar.imagen.url})
+
+    except:
+        return render(request, "AppBilbao/perfil.html",)
+
+        
+        
+        
 def productos(request):
     misProductos = Productos.objects.all()
 
